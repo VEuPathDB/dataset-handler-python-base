@@ -8,7 +8,7 @@ if sys.version_info > (3, 0):
 
 setup(
     name="HandlerBase",
-    version="1.2.2",
+    version="1.2.3",
     packages=find_packages(),
     install_requires=[""],
 )

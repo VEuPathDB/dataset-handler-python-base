@@ -7,6 +7,7 @@ import sys
 import re
 from subprocess import Popen, PIPE
 from params import Params
+from err import ValidationException
 
 
 class DatasetHandler:
@@ -273,11 +274,3 @@ class DatasetHandler:
         self.create_tarball()
         shutil.move(self.export_file_root + ".tgz", orig_path)
         os.chdir(orig_path)
-
-
-class ValidationException(Exception):
-    """
-    This represents the exception reported when a call to a validation script
-    returns a data error.
-    """
-    pass

@@ -1,4 +1,4 @@
-from dataset_handler import ValidationException
+from err import ValidationException
 
 
 class Params:
