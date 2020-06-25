@@ -189,7 +189,8 @@ class DatasetHandler:
             json.dump({
                 "name": self.params.ds_name,
                 "summary": self.params.ds_summary,
-                "description": self.params.ds_description
+                "description": self.params.ds_description,
+                "origin": self.params.origin,
             }, json_file, indent=4)
 
     def create_data_file_metadata(self):
