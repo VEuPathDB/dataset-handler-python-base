@@ -2,7 +2,23 @@ from handler_base.dataset_handler import ValidationException
 
 
 class Params:
+    """
+    Dataset Handler Parameters
+
+    Attributes:
+        ds_name (str): Dataset Name
+        ds_summary (str): Dataset Summary
+        ds_description (str): Dataset Description
+        user_id (str): WDK User ID
+        output_file (str): Output file name
+        origin (str): Dataset origin (either `galaxy` or `direct_upload`)
+    """
+
     def __init__(self, args):
+        """
+        Args:
+            args (list): List of string arguments
+        """
         if len(args) < 6:
             raise ValidationException("The tool was passed an insufficient numbers of arguments.")
 

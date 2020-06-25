@@ -33,9 +33,15 @@ class DatasetHandler:
         the export of user datasets to VEuPathDB projects.
 
         :param dataset_type: The VEuPathDB type of this dataset
+        :type dataset_type: str
+
         :param version: The version of the VEuPathDB type of this dataset
-        :param validation_script: A script that handles the validation of this
-               dataset
+        :type version: str
+
+        :param validation_script: Full path to a script that handles the
+               validation of this dataset.
+        :type validation_script: str
+
         :param args: An array of the input parameters.<br>
                The arguments are as follows:<br>
                <ol>
@@ -46,6 +52,7 @@ class DatasetHandler:
                  <li>Output File</li>
                  <li>Dataset Origin</li>
                </ol>
+        :type args: list
         """
 
         self.type = dataset_type
