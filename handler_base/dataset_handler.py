@@ -32,27 +32,20 @@ class DatasetHandler:
         Initializes the export class with the parameters needed to accomplish
         the export of user datasets to VEuPathDB projects.
 
-        :param dataset_type: The VEuPathDB type of this dataset
-        :type dataset_type: str
+        Args:
+            dataset_type (str): The VEuPathDB type of this dataset
+            version (str): The version of the VEuPathDB type of this dataset
+            validation_script (str): Full path to a script that handles the
+                validation of this dataset.
+            args (list of str): An array of the input parameters.
 
-        :param version: The version of the VEuPathDB type of this dataset
-        :type version: str
-
-        :param validation_script: Full path to a script that handles the
-               validation of this dataset.
-        :type validation_script: str
-
-        :param args: An array of the input parameters.<br>
-               The arguments are as follows:<br>
-               <ol>
-                 <li>Dataset Name</li>
-                 <li>Dataset Summary</li>
-                 <li>Dataset Description</li>
-                 <li>WDK User ID</li>
-                 <li>Output File</li>
-                 <li>Dataset Origin</li>
-               </ol>
-        :type args: list
+                The arguments are as follows:
+                    - Dataset Name
+                    - Dataset Summary
+                    - Dataset Description
+                    - WDK User ID
+                    - Output File
+                    - Dataset Origin
         """
 
         self.type = dataset_type
@@ -193,10 +186,11 @@ class DatasetHandler:
         """
         meta_path = temp_path + "/" + self.META_JSON
         with open(meta_path, "w+") as json_file:
-            json.dump({"name": self.params.ds_name,
-                       "summary": self.params.ds_summary,
-                       "description": self.params.ds_description
-                       }, json_file, indent=4)
+            json.dump({
+                "name": self.params.ds_name,
+                "summary": self.params.ds_summary,
+                "description": self.params.ds_description
+            }, json_file, indent=4)
 
     def create_data_file_metadata(self):
         """
@@ -216,9 +210,17 @@ class DatasetHandler:
 
         return dataset_files_metadata
 
-    # replace undesired characters with underscore
     @staticmethod
     def clean_file_name(file_name):
+        """
+        Replace undesired characters with underscore
+
+        Args:
+            file_name (str): Original file name
+
+        Returns:
+            str: Cleaned file name
+        """
         s = str(file_name).strip().replace(' ', '_')
         return re.sub(r'(?u)[^-\w.]', '_', s)
 
