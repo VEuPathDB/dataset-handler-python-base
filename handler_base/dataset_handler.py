@@ -6,7 +6,7 @@ import shutil
 import sys
 import re
 from subprocess import Popen, PIPE
-from handler_base.params import Params
+from params import Params
 
 
 class DatasetHandler:
