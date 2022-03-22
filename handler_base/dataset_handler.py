@@ -53,6 +53,8 @@ class DatasetHandler:
         self.version = version
         self.validation_script = validation_script
 
+        self.validation_script_program = 'python';
+
         # Extract and transform the parameters as needed into member variables
         self.params = Params(args)
 
@@ -81,7 +83,7 @@ class DatasetHandler:
         dataset_files = self.identify_dataset_files()
 
         validation_process = Popen(
-            ['python', self.validation_script],
+            [self.validation_script_program, self.validation_script],
             stdin=PIPE,
             stdout=PIPE,
             stderr=PIPE)
